@@ -16,3 +16,9 @@ addFoodButton.addEventListener('click', () => {
   food += clickPower;
   updateText();
 });
+
+//Save Progress
+
+
+
+//Reset Progress

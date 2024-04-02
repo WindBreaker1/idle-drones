@@ -64,8 +64,22 @@ hr {
 
 /* Food section */
 
-.food-section {}
+.food-section {
+  color: inherit;
+}
 
-.food-text {}
+.food-text {
+  color: inherit;
+}
 
-.add-food-button {}
+.add-food-button {
+  color: inherit;
+}
+
+.save-button {
+  color: inherit;
+}
+
+.reset-button {
+  color: inherit;
+}
