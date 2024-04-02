@@ -14,6 +14,14 @@
   --button-foreground: #ffffff;
 }
 
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: inline-block;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
@@ -62,6 +70,7 @@ hr {
 /* News section */
 .news-section {
   text-align: center;
+  padding: 10px;
 }
 
 .animated {
@@ -76,6 +85,7 @@ hr {
 /* Food section */
 
 .food-section {
+  padding: 0px 0px 10px 0px;
   color: inherit;
 }
 
@@ -102,4 +112,27 @@ hr {
 
 .reset-button {
   color: inherit;
+}
+
+/* Agriculture section */
+
+.agriculture-section {
+  padding: 15px 0px 15px 0px;
+}
+
+.tooltip-text {
+  position: absolute;
+  border: 1px solid var(--foreground);
+  padding: 20px;
+  margin: 10px;
+  background-color: var(--button-background);
+  text-align: center;
+  white-space: nowrap;
+  visibility: hidden;
+  z-index: 1;
+  transform: translate(10%, -50%);
+}
+
+.food-production-button:hover .tooltip-text {
+  visibility: visible;
 }

@@ -37,6 +37,26 @@ passiveFood();
 
 // Upgrade food production.
 
+// If food > 30, reveal agriculture section.
+foodProductionButton.classList.add('hidden');
+
+let isButtonVisible = localStorage.getItem('isButtonVisible') === "true";
+//console.log(isButtonVisible);
+
+function toggleButtonVisibility(foodValue, booleanValue) {
+  if (foodValue >= 30 && booleanValue == true) {
+    foodProductionButton.classList.remove('hidden');
+    foodProductionButton.classList.add('visible');
+  } else if (booleanValue == false) {
+    foodProductionButton.classList.remove('hidden');
+    foodProductionButton.classList.add('visible');
+  }
+}
+toggleButtonVisibility(food, isButtonVisible);
+const toggleButtonInterval = setInterval(() => {toggleButtonVisibility(food, isButtonVisible)}, 1000);
+
+
+// Actual gardening upgrade.
 let cost = 10;
 foodProductionButton.addEventListener('click', () => {
   if (food >= cost) {
@@ -55,6 +75,9 @@ function saveProgress() {
   JSON.stringify(localStorage.setItem("food", food));
   JSON.stringify(localStorage.setItem("foodProd", foodProd));
   
+  // Upgrade sections go here.
+  localStorage.setItem("isButtonVisible", false);
+
   // Change the visibility of the 'Progress saved!' text.
   saveText.style.visibility = "visible";
   setTimeout(() => {saveText.style.visibility = "hidden"}, 3000);
@@ -66,18 +89,25 @@ saveButton.addEventListener('click', saveProgress);
 function resetProgress() {
   JSON.stringify(localStorage.setItem("food", 0));
   food = 0;
-
+  
   JSON.stringify(localStorage.setItem("foodProd", 0));
   foodProd = 0;
 
+  localStorage.setItem("isButtonVisible", true);
+  foodProductionButton.classList.remove('visible');
+  foodProductionButton.classList.add('hidden');
+  clearInterval(toggleButtonInterval);
+  
   updateText();
 }
 resetButton.addEventListener('click', resetProgress);
 
+
+
+
+
 // Update all relevant text if the user reloads the page.
 updateText();
-
-
-
+//setInterval(() => {JSON.stringify(localStorage.setItem("food", food))}, 100);
 
 // The meaning of life is: waffles.

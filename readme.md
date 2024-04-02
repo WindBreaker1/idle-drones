@@ -10,7 +10,7 @@ A simple game about making drones!
 ## Gameplay Loop
 
 1. Gather '🍖 Food' by clicking on the button.
-2. When you have 50 food you unlock: '🌱 Agriculture' (plant food to get 0.1 food per second).
+2. When you have 30 food you unlock: '🌱 Agriculture' (plant food to get 0.1 food per second).
 3. When you have 500 food, you'll meet 1 '🧔 Human'. Humans consume 1 food per second.
 4. You can assign a human to become a '👩‍🌾 Farmer'. Farmers gather 2 food per second.
 5. When you have 1000 food, you'll unlock: '🌲 Forest' (where humans can gather wood).

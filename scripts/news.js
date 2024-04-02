@@ -14,7 +14,7 @@ const news = [
 ];
 
 function showNews() {
-  let x = Math.floor(Math.random() * 4);
+  let x = Math.floor(Math.random() * 5);
   switch (x) {
     case 0:
       newsSection.innerText = news[0];

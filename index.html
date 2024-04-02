@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Idle Drones</title>
+  <!-- add icon -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="app">
     <div class="header">
-      <a href="/" class="site-title">Home</a>
+      <a href="index.html" class="site-title">Home</a>
       <button class="light-switch">🌞</button>
     </div>
     <hr>
@@ -18,10 +19,16 @@
     <div class="food-section">
       <p class="food-text">0 food (0 food/second)</p>
       <button class="add-food-button">Gather Food</button>
-      <button class="food-production-button">Upgrade Food Production | Cost: 10 food</button>
       <p class="save-text">Progress saved!</p>
       <button class="save-button">Save Progress</button>
       <button class="reset-button">Reset Progress</button>
+    </div>
+    <hr>
+    <div class="agriculture-section">
+      <button class="food-production-button">
+        Upgrade Food Production | Cost: 10 food
+        <span class="tooltip-text">Plant food to get 0.1 food per second. <br> Cost: 10 food</span>
+      </button>
     </div>
     <hr>
 

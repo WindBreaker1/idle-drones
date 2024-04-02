@@ -21,8 +21,8 @@ lightSwitch.addEventListener('click', () => {
     localStorage.setItem('darkMode', 'enabled');
     lightSwitch.innerText = "🌙";
   } else {  
-  document.body.classList.remove('darkmode'); 
-  localStorage.setItem('darkMode', null);
-  lightSwitch.innerText = "🌞";
+    document.body.classList.remove('darkmode'); 
+    localStorage.setItem('darkMode', null);
+    lightSwitch.innerText = "🌞";
   }
 });
