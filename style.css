@@ -1,11 +1,17 @@
 :root {
   --background: #fff;
   --foreground: #000;
+
+  --button-background: #cdcdcd98;
+  --button-foreground: #000000;
 }
 
 .darkmode {
   --background: #000000;
   --foreground: #ffffff;
+
+  --button-background: #656565a7;
+  --button-foreground: #ffffff;
 }
 
 body {
@@ -15,6 +21,11 @@ body {
 
 button {
   cursor: pointer;
+  border: 1px solid #000;
+  padding: 5px;
+  background-color: var(--button-background);
+  /* the button foreground doesn't work for some reason */
+  color: var(--button-foreground);
 }
 
 hr {
@@ -78,6 +89,15 @@ hr {
 
 .save-button {
   color: inherit;
+}
+
+.save-text {
+  color: #1bb547;
+  visibility: hidden;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 
 .reset-button {
