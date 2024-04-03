@@ -59,6 +59,23 @@ hr {
   font-weight: bold;
 }
 
+.save-button {
+  color: inherit;
+}
+
+.save-text {
+  color: #1bb547;
+  visibility: hidden;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.reset-button {
+  color: inherit;
+}
+
 .light-switch {
   border: none;
   border-radius: 10px;
@@ -84,45 +101,16 @@ hr {
 
 /* Food section */
 
-.food-section {
-  padding: 10px 0px 10px 0px;
+.wilderness-section {
   color: inherit;
 }
 
 .food-text {
-  display: inline;
-}
-
-.human-text {
-  display: inline;
-  margin: 10px;
+  color: inherit;
 }
 
 .add-food-button {
   color: inherit;
-}
-
-.save-button {
-  color: inherit;
-}
-
-.save-text {
-  color: #1bb547;
-  visibility: hidden;
-  position: absolute;
-  top: 0%;
-  left: 50%;
-  transform: translate(-50%, 0%);
-}
-
-.reset-button {
-  color: inherit;
-}
-
-/* Agriculture section */
-
-.agriculture-section {
-  padding: 15px 0px 15px 0px;
 }
 
 .tooltip-text {
@@ -138,6 +126,10 @@ hr {
   transform: translate(10%, -50%);
 }
 
-.food-production-button:hover .tooltip-text {
+button:hover .tooltip-text {
   visibility: visible;
 }
+
+/* Human section */
+
+

@@ -1,27 +1,77 @@
-// HTML DOM elements
+// =============================================================== //
+// ======================== HTML DOM ELEMENTS ========================== //
+// =============================================================== //
+
+// Wilderness Section
 const foodText = document.querySelector(".food-text");
 const addFoodButton = document.querySelector(".add-food-button");
-const foodProductionButton = document.querySelector(".food-production-button");
-const foodProductionTooltip = document.querySelector("#food-production-tooltip");
-const humanText = document.querySelector(".human-text")
+
+// Human Section
+const humanSectionStatus = document.querySelector("#human-section-status")
+const populationText = document.querySelector(".population-text");
+const humanText = document.querySelector(".human-text");
+const humanButton = document.querySelector(".human-button");
+const humanTooltip = document.querySelector("#human-tooltip");
+
+// Farm Section
+const farmerText = document.querySelector(".farmer-text");
+const farmerButton = document.querySelector(".farmer-button");
+const farmerTooltip = document.querySelector("#farmer-tooltip");
+
+// Save Section
 const saveText = document.querySelector(".save-text");
 const saveButton = document.querySelector(".save-button");
 const resetButton = document.querySelector(".reset-button");
 
-// Commonly used variables
+// =============================================================== //
+// ======================== COMMONLY USED VARIABLES ========================== //
+// =============================================================== //
+
+// make backups in case of null for every variable
+
+// Food
 let food = JSON.parse(localStorage.getItem("food"));
-let foodProd = JSON.parse(localStorage.getItem("foodProd"));
-let human = JSON.parse(localStorage.getItem("human"));
 let clickPower = 1;
+
+// Human
+let population = JSON.parse(localStorage.getItem("population"));
+let human = JSON.parse(localStorage.getItem("human"));
+let humanCost = JSON.parse(localStorage.getItem("humanCost"))
+if (humanCost === null) {
+  humanCost = 50;
+  JSON.stringify(localStorage.setItem('humanCost', humanCost));
+}
+
+// Farmer
+let farmer = JSON.parse(localStorage.getItem("farmer"));
+let farmerCost = JSON.parse(localStorage.getItem('farmerCost'));
+if (farmerCost === null) {
+  farmerCost = 10;
+  JSON.stringify(localStorage.setItem('farmerCost', farmerCost));
+}
+let foodProd = JSON.parse(localStorage.getItem("foodProd"));
+
+// =============================================================== //
+// ========================= UPDATE DOM ========================== //
+// =============================================================== //
 
 // Update all DOM elements when something changes.
 function updateText() {
   // If food is equal to null, foodText displays '0 food', else foodText displays the update version
   food == null ? foodText.innerText = `0 food` : foodText.innerText = `${Math.trunc(food * 10) / 10} food (${Math.trunc(foodProd * 10)/10} food/second)`;
-  human == null ? humanText.innerText = `0 human/s` : humanText.innerText = `${human} human/s`;
-  foodProductionButton.innerText = `Upgrade Food Production | Cost: ${Math.trunc(plantationCost * 10) / 10} food`;
-  foodProductionTooltip.innerText = `Plant food to get 0.1 food per second. Cost: ${Math.trunc(plantationCost * 10) / 10} food`;
+  
+  updateHumanSectionStatus();
+  population == 0 ? populationText.innerText = `Population: 0` : populationText.innerText = `Population: ${population}`;
+  human == 0 ? humanText.innerText = `0 human/s` : humanText.innerText = `${human} human/s`;
+  humanTooltip.innerHTML = `Humans consume 1 food per second. <br> Cost: ${Math.trunc(humanCost * 10) / 10} food`;
+  
+  farmer == 0 ? farmerText.innerText = `0 farmer/s` : farmerText.innerText = `${farmer} farmer/s`;
+  farmerTooltip.innerHTML = `Farmers plant and gather food for you! <br> Cost: 1 human, ${Math.trunc(farmerCost * 10) / 10} food`;
 }
+
+// =============================================================== //
+// ======================== GET FOOD HERE ======================== //
+// =============================================================== //
 
 // Click to get food.
 addFoodButton.addEventListener('click', () => {
@@ -45,99 +95,130 @@ passiveFood();
 // ======================== PROGRESSION ========================== //
 // =============================================================== //
 
-// If food > 30, reveal agriculture section.
+// =============================================================== //
+// =========================== HUMANS ============================ //
+// =============================================================== //
 
-foodProductionButton.classList.add('hidden');
+// If you click the button, you will lose 50 food and gain 1 human.
+humanButton.addEventListener('click', () => {
+  if (food >= humanCost) {
+    food -= humanCost;
+    humanCost *= 1.1;
+    human += 1;
+    population += 1;
+    updateText();
+  }
+});
 
-let isButtonVisible = localStorage.getItem('isButtonVisible') === "true";
-//console.log(isButtonVisible);
-
-function toggleButtonVisibility(foodValue, booleanValue) {
-  if (foodValue >= 10 && booleanValue == true) {
-    foodProductionButton.classList.remove('hidden');
-    foodProductionButton.classList.add('visible');
-  } else if (booleanValue == false) {
-    foodProductionButton.classList.remove('hidden');
-    foodProductionButton.classList.add('visible');
+// If the amount of humans is over a certain number, update the status of the population.
+// Add more statuses!
+function updateHumanSectionStatus() {
+  if (population >= 10) {
+    humanSectionStatus.innerText = "Campground";
+  } else if (population >= 100) {
+    humanSectionStatus.innerText = "Village";
+  } else if (population >= 1000) {
+    humanSectionStatus.innerText = "Town";
+  } else if (population >= 10000) {
+    humanSectionStatus.innerText = "City";
+  } else if (population >= 100000) {
+    humanSectionStatus.innerText = "Country";
+  } else {
+    humanSectionStatus.innerText = "Wasteland";
   }
 }
-toggleButtonVisibility(food, isButtonVisible);
-const toggleButtonInterval = setInterval(() => {toggleButtonVisibility(food, isButtonVisible)}, 1000);
-
-
 
 // =============================================================== //
-// ======================== AGRICULTURE ========================== //
+// ============================ FARM ============================= //
 // =============================================================== //
 
-// Upgrade food production.
-
-// Actual plantation upgrade.
-let plantationCost = JSON.parse(localStorage.getItem('plantationCost'));
-if (plantationCost === null) {
-  plantationCost = 10;
-  JSON.stringify(localStorage.setItem('plantationCost', plantationCost));
-}
-foodProductionButton.addEventListener('click', () => {
-  if (food >= plantationCost) {
-    food -= plantationCost;
-    plantationCost *= 1.6;
+farmerButton.addEventListener('click', () => {
+  if (food >= farmerCost && human >= 1) {
+    food -= farmerCost;
+    human -= 1;
+    farmer += 1;
+    farmerCost *= 1.6;
     foodProd += 0.1;
     updateText();
   }
 });
 
-// If food > 500, meet a human.
+// =============================================================== //
+// ============================ ONE TIME UPGRADES ============================= //
+// =============================================================== //
 
-
-function meetHuman() {
-  if (food >= 30 && human === 0) {
-    human += 1;
-    localStorage.setItem("human", JSON.stringify(human));
-    updateText();
+let upgradeOne = {
+  name: 'Full tummy, happy spirit',
+  desc: 'x2 Farmer production',
+  cost: 10,
+  active: false,
+  effect: function effect() {
+    foodProd *= 2;
   }
-}
-meetHuman();
+};
 
+let upgradeOneButton = document.querySelector(".upgrade-one-button");
+upgradeOneButton.addEventListener('click', () => {
+  if (food >= upgradeOne.cost) {
+    food -= upgradeOne.cost;
+    upgradeOne.active = true;
+  }
+  if (upgradeOne.active == true) {
+    upgradeOne.effect();
+  }
+})
+
+
+// =============================================================== //
+// ======================== SAVE AND RESET PROGRESS ========================== //
+// =============================================================== //
 
 //Save Progress
 
 function saveProgress() {
-  // Saved values go here
+  // Food
   JSON.stringify(localStorage.setItem("food", food));
-  JSON.stringify(localStorage.setItem("foodProd", foodProd));
+
+  // Human
+  JSON.stringify(localStorage.setItem("population", population));
   JSON.stringify(localStorage.setItem("human", human));
-  JSON.stringify(localStorage.setItem('plantationCost', plantationCost));
-  
-  // Upgrade sections go here.
-  localStorage.setItem("isButtonVisible", false);
+  JSON.stringify(localStorage.setItem("humanCost", humanCost));
+
+  // Farmer
+  JSON.stringify(localStorage.setItem('farmer', farmer));
+  JSON.stringify(localStorage.setItem('farmerCost', farmerCost));
+  JSON.stringify(localStorage.setItem("foodProd", foodProd));
 
   // Change the visibility of the 'Progress saved!' text.
   saveText.style.visibility = "visible";
   setTimeout(() => {saveText.style.visibility = "hidden"}, 3000);
+
+  updateText();
 }
 saveButton.addEventListener('click', saveProgress);
 
 //Reset Progress
 
 function resetProgress() {
-  //Reset values.
+  // Food
   JSON.stringify(localStorage.setItem("food", 0));
   food = 0;
   
-  JSON.stringify(localStorage.setItem("foodProd", 0));
-  foodProd = 0;
-
+  // Human
+  JSON.stringify(localStorage.setItem("population", 0));
+  population = 0;
   JSON.stringify(localStorage.setItem("human", 0));
   human = 0;
+  JSON.stringify(localStorage.setItem("humanCost", 50));
+  humanCost = 50;
 
-  JSON.stringify(localStorage.setItem('plantationCost', null));
-
-  //Hide plantation button when reset.
-  localStorage.setItem("isButtonVisible", true);
-  foodProductionButton.classList.remove('visible');
-  foodProductionButton.classList.add('hidden');
-  clearInterval(toggleButtonInterval);
+  // Farm
+  JSON.stringify(localStorage.setItem('farmer', 0));
+  farmer = 0;
+  JSON.stringify(localStorage.setItem('farmerCost', 10));
+  farmerCost = 10;
+  JSON.stringify(localStorage.setItem("foodProd", 0));
+  foodProd = 0;
   
   //Update every single text on the page.
   updateText();
@@ -146,7 +227,9 @@ resetButton.addEventListener('click', resetProgress);
 
 
 
-
+// =============================================================== //
+// ======================== ON PAGE LOAD FUNCTIONS ========================== //
+// =============================================================== //
 
 // Update all relevant text if the user reloads the page.
 updateText();
