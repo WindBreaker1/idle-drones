@@ -1,0 +1,5 @@
+<!-- How to add an svg only using a pasted emoji: -->
+<!-- https://www.youtube.com/watch?v=V35_ybFs5t8 -->
+<svg xmlns="http://www.w3.org/2000/svg">
+  <text y="25" font-size="27">🤖</text>
+</svg>

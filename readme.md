@@ -25,8 +25,9 @@ A simple game about making drones!
 - [ ] Find a better save system than just `localStorage`?
 - [ ] Add more one-liners to `scripts/news.js`.
 - [ ] Better readme file.
-- [ ] Add game to personal website. (https://zaalmoxxis.com/).
-- [ ] Launch with github pages.
+- [x] Add game to personal website. (https://zaalmoxxis.com/).
+- [x] Add a website icon.
+- [x] Launch with github pages.
 - [x] 1.0 build.
 - [x] Alpha build.
 - [x] Initialize git repo.
