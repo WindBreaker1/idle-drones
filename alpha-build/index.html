@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idle Drones</title>
+  <!-- add icon -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <a href="index.html" class="site-title">Home</a>
+      <p class="save-text">Progress saved!</p>
+      <button class="save-button">Save Progress</button>
+      <button class="reset-button">Reset Progress</button>
+      <button class="light-switch">🌞</button>
+    </div>
+    <hr>
+    <div class="news-section">You wake up in a strange land...</div>
+    <hr>
+    <div class="research-section">
+      <h2 class="section-title">R&D Department</h2>
+      <button class="upgrade-one-button">
+        Full tummy, happy spirit
+        <span class="tooltip-text">x2 Farmer Production <br> Cost: 10 food</span>
+      </button>
+    </div>
+    <hr>
+    <div class="wilderness-section">
+      <h2 class="section-title">Wilderness</h2>
+      <p class="food-text">0 food (0 food/second)</p>
+      <button class="add-food-button">
+        Gather Food
+        <span class="tooltip-text">Gather some food. <br> Who knows? <br> Maybe you'll lure someone else.</span>
+      </button>
+    </div>
+    <hr>
+    <div class="human-section">
+      <h2 id="human-section-status" class="section-title">Wasteland</h2>
+      <h3 class="population-text">Population: 0</h3>
+      <p class="human-text">0 human/s</p>
+      <button class="human-button">
+        Lure a human
+        <span id="human-tooltip" class="tooltip-text">Humans consume 1 food per second. <br> Cost: 50 food</span>
+      </button>
+    </div>
+    <hr>
+    <div class="farm-section">
+      <h2 class="section-title">Farm</h2>
+      <p class="farmer-text">0 farmer/s</p>
+      <button class="farmer-button">
+        Farmer
+        <span id="farmer-tooltip" class="tooltip-text"> Farmers plant and gather food for you! <br> Cost: 1 human, 10 food</span>
+      </button>
+    </div>
+    <hr>
+    <div class="forest-section">
+      <h2 class="section-title">Forest</h2>
+      <p class="wood-text">0 wood (0 wood/second)</p>
+      <p class="lumberjack-text">0 lumberjack/s</p>
+      <button class="wood-button">
+        Lumberjack
+        <span class="tooltip-text">Lumberjacks cut and gather wood for you! <br> Cost: 1 human, 100 food</span>
+      </button>
+    </div>
+    <hr>
+    <div class="quarry-section">
+      <h2 class="section-title">Quarry</h2>
+      <p class="stone-test">0 stone (0 stone/second)</p>
+      <p class="miner-text">0 miner/s</p>
+      <button class="miner">
+        Miner
+        <span class="tooltip-text">Miners mine and gather stone for you! <br> Cost: 1 human, 1000 food</span>
+      </button>
+    </div>
+    <hr>
+
+  </div>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/lightSwitch.js"></script>
+  <script src="scripts/news.js"></script>
+</body>
+</html>
