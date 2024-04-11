@@ -276,13 +276,13 @@ function updateText() {
 function updateHumanSectionStatus() {
   if (value.population >= 10) {
     humanSectionStatus.innerText = "🏕️Campground";
-  } if (value.population >= 100) {
+  } else if (value.population >= 100) {
     humanSectionStatus.innerText = "🏠Village";
-  } if (value.population >= 1000) {
+  } else if (value.population >= 1000) {
     humanSectionStatus.innerText = "🏛️Town";
-  } if (value.population >= 10000) {
+  } else if (value.population >= 10000) {
     humanSectionStatus.innerText = "🏙️City";
-  } if (value.population >= 100000) {
+  } else if (value.population >= 100000) {
     humanSectionStatus.innerText = "🗾Country";
   } else {
     humanSectionStatus.innerText = "🏜️Wasteland";
