@@ -28,6 +28,7 @@ A simple game about making drones!
 - [x] Add game to personal website. (https://zaalmoxxis.com/).
 - [x] Add a website icon.
 - [x] Launch with github pages.
+- [ ] 1.1 build.
 - [x] 1.0 build.
 - [x] Alpha build.
 - [x] Initialize git repo.
