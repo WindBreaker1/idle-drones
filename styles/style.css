@@ -30,7 +30,7 @@ body {
 button {
   cursor: pointer;
   border: 1px solid #000;
-  padding: 5px;
+  padding: 10px;
   background-color: var(--button-background);
   /* the button foreground doesn't work for some reason */
   color: var(--button-foreground);
@@ -57,7 +57,11 @@ hr {
   color: var(--foreground);
   text-decoration: none;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
+}
+
+.small-text {
+  font-size: 1rem;
 }
 
 
@@ -134,6 +138,8 @@ hr {
 
 .wilderness-section {
   color: inherit;
+  background-color: #57ac9a40;
+  padding: 20px;
 }
 
 .food-text {
@@ -159,6 +165,43 @@ hr {
 
 button:hover .tooltip-text {
   visibility: visible;
+}
+
+/* other sections */
+
+.research-section {
+  background-color: #76a3b540;
+  padding: 20px;
+}
+
+.human-section {
+  background-color: #e6c68640;
+  padding: 20px;
+}
+
+.farm-section {
+  background-color: #723f1540;
+  padding: 20px;
+}
+
+.forest-section {
+  background-color: #62bd2140;
+  padding: 20px;
+}
+
+.quarry-section {
+  background-color: #7a7a6240;
+  padding: 20px;
+}
+
+.abandoned-city-section {
+  background-color: #b0565640;
+  padding: 20px;
+}
+
+.drone-factory-section {
+  background-color: #ad58ba40;
+  padding: 20px;
 }
 
 /* Footer Section */

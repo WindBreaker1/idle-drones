@@ -146,8 +146,6 @@ function updateText() {
   if (upgradeOne.active == true) {
     upgradeOneButton.disabled = 'true';
     upgradeOneButton.classList.add('bought');
-
-    //upgradeTwoButton.classList.remove('hidden');
   }
   if (upgradeTwo.active == true) {
     upgradeTwoButton.disabled = 'true';
@@ -274,16 +272,16 @@ function updateText() {
 // If the amount of humans is over a certain number, update the status of the population.
 // Add more statuses!
 function updateHumanSectionStatus() {
-  if (value.population >= 10) {
-    humanSectionStatus.innerText = "🏕️Campground";
-  } else if (value.population >= 100) {
-    humanSectionStatus.innerText = "🏠Village";
-  } else if (value.population >= 1000) {
-    humanSectionStatus.innerText = "🏛️Town";
+  if (value.population >= 100000) {
+    humanSectionStatus.innerText = "🗾Country";
   } else if (value.population >= 10000) {
     humanSectionStatus.innerText = "🏙️City";
-  } else if (value.population >= 100000) {
-    humanSectionStatus.innerText = "🗾Country";
+  } else if (value.population >= 1000) {
+    humanSectionStatus.innerText = "🏛️Town";
+  } else if (value.population >= 100) {
+    humanSectionStatus.innerText = "🏠Village";
+  } else if (value.population >= 10) {
+    humanSectionStatus.innerText = "🏕️Campground";
   } else {
     humanSectionStatus.innerText = "🏜️Wasteland";
   }
@@ -1021,7 +1019,7 @@ upgradeTwentyfourButton.addEventListener('click', () => {
 // Upgrade Twentyfive == Build Drone Factory
 let upgradeTwentyfive = JSON.parse(localStorage.getItem("upgradeTwentyfive"));
 if (upgradeTwentyfive == null) {
-  upgradeTwentyfive = new Upgrade('Name', 'Description', false, 0, 10000000, 1000000, 100000, 10000, 0);
+  upgradeTwentyfive = new Upgrade('Name', 'Description', false, 0, 0, 1000000, 100000, 10000, 0);
   localStorage.setItem("upgradeTwentyfive", JSON.stringify(upgradeTwentyfive));
 }
 upgradeTwentyfiveButton.addEventListener('click', () => {
@@ -1075,7 +1073,7 @@ upgradeTwentysixButton.addEventListener('click', () => {
 // Upgrade Twentyseven == Frameworks
 let upgradeTwentyseven = JSON.parse(localStorage.getItem("upgradeTwentyseven"));
 if (upgradeTwentyseven == null) {
-  upgradeTwentyseven = new Upgrade('Name', 'Description', false, 0, 0, 0, 0, 0, 100000);
+  upgradeTwentyseven = new Upgrade('Name', 'Description', false, 0, 0, 0, 0, 0, 1000);
   localStorage.setItem("upgradeTwentyseven", JSON.stringify(upgradeTwentyseven));
 }
 upgradeTwentysevenButton.addEventListener('click', () => {
@@ -1102,7 +1100,7 @@ upgradeTwentysevenButton.addEventListener('click', () => {
 // Upgrade Twentyeight == Artificial Intelligence
 let upgradeTwentyeight = JSON.parse(localStorage.getItem("upgradeTwentyeight"));
 if (upgradeTwentyeight == null) {
-  upgradeTwentyeight = new Upgrade('Name', 'Description', false, 0, 0, 0, 0, 0, 10000000);
+  upgradeTwentyeight = new Upgrade('Name', 'Description', false, 0, 0, 0, 0, 0, 1000000);
   localStorage.setItem("upgradeTwentyeight", JSON.stringify(upgradeTwentyeight));
 }
 upgradeTwentyeightButton.addEventListener('click', () => {
