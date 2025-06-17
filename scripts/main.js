@@ -532,7 +532,7 @@ upgradeFourButton.addEventListener('click', () => {
     value.human -= upgradeFour.humanCost;
     value.food -= upgradeFour.foodCost;
     upgradeFour.active = true;
-    value.wood += 100;
+    value.wood += 110;
     updateText();
   }
 })
@@ -612,7 +612,7 @@ upgradeNineButton.addEventListener('click', () => {
     value.food -= upgradeNine.foodCost;
     value.wood -= upgradeNine.woodCost;
     upgradeNine.active = true;
-    value.stone += 100;
+    value.stone += 110;
     updateText();
   }
 })
@@ -762,7 +762,7 @@ upgradeFifteenButton.addEventListener('click', () => {
     value.scrap -= upgradeFifteen.scrapCost;
     value.drone -= upgradeFifteen.droneCost;
     upgradeFifteen.active = true;
-    value.scrap += 100;
+    value.scrap += 110;
     updateText();
   }
 })
