@@ -1,0 +1,216 @@
+:root {
+  --background: #fff;
+  --foreground: #000;
+
+  --button-background: #cdcdcde7;
+  --button-foreground: #000000;
+}
+
+.darkmode {
+  --background: #000000;
+  --foreground: #ffffff;
+
+  --button-background: #656565a7;
+  --button-foreground: #ffffff;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: inline-block;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid #000;
+  padding: 10px;
+  background-color: var(--button-background);
+  /* the button foreground doesn't work for some reason */
+  color: var(--button-foreground);
+}
+
+hr {
+  width: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header section. */
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-title {
+  color: var(--foreground);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.7rem;
+}
+
+.small-text {
+  font-size: 1rem;
+}
+
+
+.light-switch {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #82828285;
+  
+}
+
+/* News section */
+.news-section {
+  text-align: center;
+  padding: 10px;
+}
+
+.animated {
+  animation: news-animation 0.5s linear;
+}
+
+@keyframes news-animation {
+  from {transform: translate(0px, 5px);}
+  to {transform: translate(0px, 0px);}
+}
+
+/* Settings section */
+
+.settings-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.save-button {
+  color: inherit;
+}
+
+.save-text {
+  color: #1bb547;
+  visibility: hidden;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.reset-button {
+  color: inherit;
+}
+
+/* Research section */
+
+.bought {
+  text-decoration: line-through;
+}
+
+/* Modal Section */
+
+.win-modal {
+  position: absolute;
+  visibility: hidden;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--button-background);
+  padding: 50px;
+  border: 1px solid var(--foreground);
+  text-align: center;
+}
+
+/* Food section */
+
+.wilderness-section {
+  color: inherit;
+  background-color: #57ac9a40;
+  padding: 20px;
+}
+
+.food-text {
+  color: inherit;
+}
+
+.add-food-button {
+  color: inherit;
+}
+
+.tooltip-text {
+  position: absolute;
+  border: 1px solid var(--foreground);
+  padding: 20px;
+  margin: 10px;
+  background-color: var(--button-background);
+  text-align: center;
+  white-space: nowrap;
+  visibility: hidden;
+  z-index: 1;
+  transform: translate(10%, -50%);
+}
+
+button:hover .tooltip-text {
+  visibility: visible;
+}
+
+/* other sections */
+
+.research-section {
+  background-color: #76a3b540;
+  padding: 20px;
+}
+
+.human-section {
+  background-color: #e6c68640;
+  padding: 20px;
+}
+
+.farm-section {
+  background-color: #723f1540;
+  padding: 20px;
+}
+
+.forest-section {
+  background-color: #62bd2140;
+  padding: 20px;
+}
+
+.quarry-section {
+  background-color: #7a7a6240;
+  padding: 20px;
+}
+
+.abandoned-city-section {
+  background-color: #b0565640;
+  padding: 20px;
+}
+
+.drone-factory-section {
+  background-color: #ad58ba40;
+  padding: 20px;
+}
+
+/* Footer Section */
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
